@@ -66,6 +66,10 @@ public class LambdaClientEvents
 	@SubscribeEvent
 	public static void onZoom(FOVModifier event)
 	{
+		if(Minecraft.getMinecraft().gameSettings.thirdPersonView != 0) {
+			return;
+		}
+
 		if(LambdaUtilities.getZooming(event.getEntity()).get()) event.setFOV(event.getFOV() / 3F);
 	}
 
